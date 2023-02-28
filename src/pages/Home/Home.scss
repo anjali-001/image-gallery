@@ -1,0 +1,13 @@
+.home-image-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    .each-image{
+        img {
+            width: 200px;
+            height: 200px;
+        }
+        
+    }
+    
+}
