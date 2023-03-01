@@ -28,7 +28,7 @@ const ImageDetailsProvider = ({ children }) => {
     //   .catch((e) => console.log(e));
 
     const formattedData = data.map((item, index) => ({
-      uuid: getUuid(item.title, index),
+      index,
       ...item,
     }));
 

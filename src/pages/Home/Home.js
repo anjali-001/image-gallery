@@ -20,11 +20,7 @@ const Home = () => {
           <div
             className="each-image"
             onClick={() => {
-              navigate(imageDetailPath(uuid), {
-                state: {
-                  ...item,
-                },
-              });
+              navigate(imageDetailPath(index));
             }}
           >
             <img src={item.url} />

@@ -1,23 +1,42 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import {  useNavigate, useParams } from 'react-router-dom';
 import { useImageDetailsContext } from '../../context/ImageDetailsProvider';
+import { imageDetailPath } from '../../utils/utils';
+import './ImageDetails.scss'
+import LeftArrowIcon from '../../images/icons/arrow-left-circle.svg'
+import RightArrowIcon from '../../images/icons/arrow-right-circle.svg'
 
-const ImageDetails = ({
-  title = 'Title',
-  description = 'Image description',
-  url = '',
-}) => {
-  const location = useLocation();
+const ImageDetails = () => {
+  const {uuid} = useParams()
   const { imagesData } = useImageDetailsContext();
-  const [imageData, setImageData] = useState(location?.state ?? {});
+  const [imageData, setImageData] = useState({})
+  const navigate = useNavigate();
 
-  console.log({ imagesData });
+
+  const handleLeftIconClick = () => {
+    navigate(imageDetailPath(imageData?.index - 1))
+  }
+
+  const handleRightIconClick = () => {
+    navigate(imageDetailPath(imageData?.index + 1))
+  }
+
+  useEffect(() => {
+    const currentImageData = imagesData.find((item) => item.index === Number(uuid))
+    setImageData(currentImageData)
+  }, [uuid])
 
   return (
-    <div>
-      <img src={imageData.url} />
-      <p>{imageData.title}</p>
-      <div>{imageData.explanation}</div>
+    <div className='image-details-wrapper'>
+    {imageData?.index> 0 && <div className='icon'  onClick={handleLeftIconClick}><img  src={LeftArrowIcon}/></div>}
+    <div className='container'>
+      <img src={imageData?.url} />
+      <div>
+      <p>{imageData?.title}</p>
+      <div>{imageData?.explanation}</div>
+      </div>
+    </div>
+    {imageData?.index < imagesData.length-1 && <div className='icon'  onClick={handleRightIconClick}><img src={RightArrowIcon}/></div>}
     </div>
   );
 };
