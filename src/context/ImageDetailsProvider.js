@@ -1,8 +1,8 @@
 import axios from 'axios';
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { GET_ALL_IMAGES_DATA } from '../constants/ApiUrls';
 import { data } from '../constants/data';
-import { getUuid, noop } from '../utils/utils';
+import {  noop } from '../utils/utils';
 
 const ImageDetailsContext = createContext({
   imagesData: [],

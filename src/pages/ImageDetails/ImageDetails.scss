@@ -5,9 +5,6 @@
     flex-direction: column;
     height: 100vh;
 
-
-
-    
     .image-detail-img{
         max-width: 100%;
         max-height: 90vh;
@@ -48,4 +45,8 @@
         }
     }
 
+}
+
+.back-button{
+    cursor: pointer;
 }
