@@ -28,15 +28,16 @@ const ImageDetails = () => {
 
   return (
     <div className='image-details-wrapper'>
-    {imageData?.index> 0 && <div className='icon'  onClick={handleLeftIconClick}><img  src={LeftArrowIcon}/></div>}
-    <div className='container'>
-      <img src={imageData?.url} />
-      <div>
-      <p>{imageData?.title}</p>
-      <div>{imageData?.explanation}</div>
-      </div>
-    </div>
-    {imageData?.index < imagesData.length-1 && <div className='icon'  onClick={handleRightIconClick}><img src={RightArrowIcon}/></div>}
+    
+    
+      <img src={imageData?.url} className="image-detail-img" />
+      
+      <p className='title'>{imageData?.title}</p>
+      <div className='description'>{imageData?.explanation}</div>
+      
+   
+    {imageData?.index> 0 && <div className='arrow left-arrow'  onClick={handleLeftIconClick}><img  src={LeftArrowIcon}/></div>}
+    {imageData?.index < imagesData.length-1 && <div className='arrow right-arrow'  onClick={handleRightIconClick}><img src={RightArrowIcon}/></div>}
     </div>
   );
 };
