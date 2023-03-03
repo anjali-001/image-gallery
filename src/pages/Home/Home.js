@@ -14,7 +14,7 @@ const Home = () => {
 
   return (
     <div className="home-image-container">
-      {imagesData.map((item, index) => {
+      {imagesData.sort((a,b) =>  new Date(b.date) - new Date(a.date)).map((item, index) => { // ssorting the data for getting the latest images first
         const uuid = getUuid(item.title, index);
         return (
           <div

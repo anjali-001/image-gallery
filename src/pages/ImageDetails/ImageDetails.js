@@ -9,7 +9,7 @@ import { routes } from '../../constants/paths';
 
 const ImageDetails = () => {
   const {uuid} = useParams()
-  const { imagesData } = useImageDetailsContext();
+  const { imagesData, fetchAllImagesData } = useImageDetailsContext();
   const [imageData, setImageData] = useState({})
   const navigate = useNavigate();
 
@@ -22,10 +22,22 @@ const ImageDetails = () => {
     navigate(imageDetailPath(imageData?.index + 1))
   }
 
+
+  useEffect(() => {
+    if(imagesData.length === 0)
+    {
+      fetchAllImagesData()
+    }
+  }, [])
+
+
   useEffect(() => {
     const currentImageData = imagesData.find((item) => item.index === Number(uuid))
     setImageData(currentImageData)
-  }, [uuid])
+  }, [uuid, imagesData])
+
+  
+  
 
   return (
     <>
