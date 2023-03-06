@@ -7,6 +7,7 @@ import LeftArrowIcon from '../../images/icons/arrow-left-circle.svg'
 import RightArrowIcon from '../../images/icons/arrow-right-circle.svg'
 import BackButtonIcon from '../../images/icons/arrow-left.svg'
 import { routes } from '../../constants/paths';
+import LazyloadImage from '../../components/LazyLoadImage/LazyloadImage';
 
 const ImageDetails = () => {
   const {uuid} = useParams()
@@ -44,7 +45,7 @@ const ImageDetails = () => {
     <>
     <div className='back-button-container' onClick={() => navigate(routes.homePagePath)}><img src={BackButtonIcon} alt="back button"/><span>Home</span></div>
     <div className='image-details-wrapper'>
-      <img src={imageData?.url} className="image-detail-img" alt="day" />
+    <LazyloadImage image={{src:imageData?.url, alt:"day" }} className="image-detail-img"/>
       <div className='title-header-wrapper'>{imageData?.title}<div className='date'>{imageData?.date}</div></div>
       <div className='description'>{imageData?.explanation}</div>
     {imageData?.index> 0 && <div className='arrow left-arrow'  onClick={handleLeftIconClick}><img  src={LeftArrowIcon} alt="left arrow"/></div>}
